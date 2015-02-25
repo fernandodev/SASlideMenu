@@ -66,6 +66,7 @@
 -(void) revealLeftMenu{
     [self.rootController doSlideToSide];
 }
+
 -(void) revealRightMenu{
     if (self.rootController.isRightMenuEnabled && self.rootController.rightMenu != nil) {
         [self.rootController addRightMenu];
@@ -73,6 +74,9 @@
     }
 }
 
+-(void) closeMenu {
+    [self.rootController doSlideIn:nil];
+}
 
 #pragma mark -
 #pragma mark UIGestureRecognizerDelegate

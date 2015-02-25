@@ -19,8 +19,10 @@
 @property (strong, nonatomic) NSObject<SASlideMenuDelegate>* slideMenuDelegate;
 
 -(void)selectContentAtIndexPath:(NSIndexPath *)indexPath scrollPosition:(UITableViewScrollPosition)scrollPosition;
--(void) revealLeftMenu;
 
+-(void) revealLeftMenu;
 -(void) revealRightMenu;
+
+-(void) closeMenu;
 
 @end
