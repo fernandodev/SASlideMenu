@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'SASlideMenu'
-  s.version      = '2.0.3'
+  s.version      = '2.0.4'
   s.license      = { :type => 'MIT', :file => 'README.md' }
   s.summary      = 'A simple library to create sliding menus that can be used in storyboards and supports static cells.'
   s.homepage     = 'https://github.com/stefanoa/SASlideMenu'
