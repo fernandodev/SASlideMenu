@@ -303,10 +303,10 @@ typedef enum {
     UIView* panningView = gesture.view;
     CGPoint velocity = [gesture velocityInView:panningView];
     
-    if (velocity.x < -150) {
+    if (velocity.x < -350) {
         //Close Menu
         [self doSlideIn:nil];
-    } else if (velocity.x > 150){
+    } else if (velocity.x > 350){
         [self doSlideToSide];
     }
     
