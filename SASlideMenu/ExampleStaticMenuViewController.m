@@ -14,7 +14,7 @@
 #import "LightViewController.h"
 #import "ShadesViewController.h"
 
-@interface ExampleStaticMenuViewController() <SASlideMenuDataSource,SASlideMenuDelegate>
+@interface ExampleStaticMenuViewController() <SASlideMenuDataSource,SASlideMenuDelegate,UITableViewDelegate>
 
 @end
 
@@ -44,13 +44,6 @@
 
 -(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath *)indexPath{
     return YES;
-}
-
--(Boolean) disablePanGestureForIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row ==0) {
-        return YES;
-    }
-    return NO;
 }
 
 -(void) configureMenuButton:(UIButton *)menuButton{
@@ -104,6 +97,19 @@
 }
 -(void) slideMenuDidSlideToLeft:(UINavigationController *)selectedContent{
     NSLog(@"slideMenuDidSlideToLeft");
+}
+
+#pragma mark -
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = indexPath.row;
+    
+    if(row == 3) {
+        [self closeMenu];
+    } else {
+        [super tableView: tableView didSelectRowAtIndexPath:indexPath];
+    }
 }
 
 @end

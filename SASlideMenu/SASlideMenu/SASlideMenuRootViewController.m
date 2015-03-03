@@ -298,8 +298,21 @@ typedef enum {
     
 }
 
--(void) panItem:(UIPanGestureRecognizer*)gesture{    
+-(void) panItem:(UIPanGestureRecognizer*)gesture{
+    
     UIView* panningView = gesture.view;
+    CGPoint velocity = [gesture velocityInView:panningView];
+    
+    if (velocity.x < -150) {
+        //Close Menu
+        [self doSlideIn:nil];
+    } else if (velocity.x > 150){
+        [self doSlideToSide];
+    }
+    
+    return;
+    
+    //TODO: REFACTOR ALL METHODS FOR CLOSING MENU
     CGPoint translation = [gesture translationInView:panningView];
     UIView* movingView = self.selectedContent.view;
     
@@ -324,6 +337,8 @@ typedef enum {
         CGFloat originx = movingView.frame.origin.x;
         CGFloat t =self.selectedContent.view.frame.origin.x;
         CGFloat limit = self.view.frame.size.width/2;
+        
+        //TODO: refactor (if menu is closed DO NOTHING!) else (complete closing animatimation)
         if (panningState == SASlideMenuPanningStateRight) {
             CGPoint velocity = [gesture velocityInView:self.view];
             
@@ -358,6 +373,7 @@ typedef enum {
                 contentSliding = SASlideMenuContentSlidingOut;
             }
         }
+        
         if (panningState == SASlideMenuPanningStateLeft) {
             if (panningXSpeed > kSwipeMinDetectionSpeed) {
                 [self doSlideIn:nil];
